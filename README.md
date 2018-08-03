@@ -6,4 +6,4 @@ List of notebooks:
 1 - Derivation of zeroth order slice mask  
 2 - Determining the slice transmission  
 3 - Deriving a new detector slice mask  
-
+4 - Examine created slice maps
