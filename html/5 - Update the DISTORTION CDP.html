@@ -11813,8 +11813,6 @@ div#notebook {
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Define paths to data</span>
 <span class="n">workDir</span>   <span class="o">=</span> <span class="s1">&#39;/Users/ioannisa/Desktop/python/miri_devel/&#39;</span>
 <span class="n">cdpDir</span>    <span class="o">=</span> <span class="n">workDir</span><span class="o">+</span><span class="s1">&#39;cdp_data/&#39;</span>
-<span class="n">d2cMapDir</span> <span class="o">=</span> <span class="n">workDir</span><span class="o">+</span><span class="s1">&#39;distortionMaps/&#39;</span>
-<span class="n">lvl2path</span>  <span class="o">=</span> <span class="n">workDir</span><span class="o">+</span><span class="s1">&#39;FM_data/LVL2/&#39;</span>
 <span class="n">outDir</span>    <span class="o">=</span> <span class="n">cdpDir</span><span class="o">+</span><span class="s2">&quot;CDP7/&quot;</span>
 </pre></div>
 
@@ -11895,74 +11893,6 @@ div#notebook {
 
     <span class="c1"># save output</span>
     <span class="n">old_distortion_cdp</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">outDir</span> <span class="o">+</span> <span class="s2">&quot;MIRI_FM_MIR{}_DISTORTION_7B.05.00.fits&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">miri_setup</span><span class="p">),</span><span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Matrix-power-asymmetric?">Matrix power asymmetric?<a class="anchor-link" href="#Matrix-power-asymmetric?">&#182;</a></h2>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">old_distortion_cdp</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">cdpDir</span><span class="o">+</span><span class="s1">&#39;CDP7/MIRI_FM_MIRIFUSHORT_12SHORT_DISTORTION_06.04.00.fits&#39;</span><span class="p">)</span>
-
-<span class="c1"># change headers</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;DATE&#39;</span><span class="p">]</span>     <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">())</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;FILENAME&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MIRI_FM_MIRIFUSHORT_12SHORT_DISTORTION_7B.05.00.fits&#39;</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;VERSION&#39;</span><span class="p">]</span>  <span class="o">=</span> <span class="s1">&#39;7B.05.00&#39;</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">add_history</span><span class="p">(</span><span class="s2">&quot;- created new slice maps based on slice transmission&quot;</span><span class="p">)</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">add_history</span><span class="p">(</span><span class="s2">&quot;MIRI-TN-00005-KUL, Ioannis Argyriou and Bart Vandenbussche&quot;</span><span class="p">)</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="p">[</span><span class="s1">&#39;ORIGFILE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;MIRI_FM_MIRIFUSHORT_12SHORT_DISTORTION_06.04.00.fits&#39;</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">add_history</span><span class="p">(</span><span class="s2">&quot;- increased the power in the albe_to_XANYAN matrices&quot;</span><span class="p">)</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">add_history</span><span class="p">(</span><span class="s2">&quot;- increased the power in the XANYAN_to_albe matrices&quot;</span><span class="p">)</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">add_history</span><span class="p">(</span><span class="s2">&quot;From i,j = 0,1 increased to i,j = 0,1,2&quot;</span><span class="p">)</span>
-
-<span class="c1"># extend definition of transform matrices from alpha-beta to XAN/YAN and vice-versa</span>
-<span class="n">albe_to_XANYAN</span> <span class="o">=</span> <span class="n">old_distortion_cdp</span><span class="p">[</span><span class="s1">&#39;albe_to_XANYAN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">XANYAN_to_albe</span> <span class="o">=</span> <span class="n">old_distortion_cdp</span><span class="p">[</span><span class="s1">&#39;XANYAN_to_albe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="n">albe_to_XANYAN_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">albe_to_XANYAN</span><span class="p">,</span> <span class="s1">&#39;COEFF_2_0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">albe_to_XANYAN_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">albe_to_XANYAN_new</span><span class="p">,</span> <span class="s1">&#39;COEFF_2_1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">albe_to_XANYAN_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">albe_to_XANYAN_new</span><span class="p">,</span> <span class="s1">&#39;COEFF_3_0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">albe_to_XANYAN_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">albe_to_XANYAN_new</span><span class="p">,</span> <span class="s1">&#39;COEFF_3_1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="n">XANYAN_to_albe_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">XANYAN_to_albe</span><span class="p">,</span> <span class="s1">&#39;COEFF_2_0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">XANYAN_to_albe_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">XANYAN_to_albe_new</span><span class="p">,</span> <span class="s1">&#39;COEFF_2_1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">XANYAN_to_albe_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">XANYAN_to_albe_new</span><span class="p">,</span> <span class="s1">&#39;COEFF_3_0&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">XANYAN_to_albe_new</span> <span class="o">=</span> <span class="n">rec</span><span class="o">.</span><span class="n">append_fields</span><span class="p">(</span><span class="n">XANYAN_to_albe_new</span><span class="p">,</span> <span class="s1">&#39;COEFF_3_1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">],</span> <span class="n">dtypes</span><span class="o">=</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span><span class="n">usemask</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">asrecarray</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-
-<span class="c1"># update corresponding fits extensions</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="s1">&#39;albe_to_XANYAN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">albe_to_XANYAN_new</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="s1">&#39;XANYAN_to_albe&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">XANYAN_to_albe_new</span>
-<span class="n">old_distortion_cdp</span><span class="p">[</span><span class="s1">&#39;Slice_number&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>   <span class="o">=</span> <span class="n">new_sliceMaps</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-
-<span class="c1"># save output</span>
-<span class="n">old_distortion_cdp</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">outDir</span> <span class="o">+</span> <span class="s2">&quot;MIRI_FM_MIRIFUSHORT_12SHORT_DISTORTION_7B.05.00.fits&quot;</span><span class="p">,</span><span class="n">overwrite</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
 </div>
